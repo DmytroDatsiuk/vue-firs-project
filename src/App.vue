@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <h1>Сторінка з постами</h1>
+    <my-button @click="fetchPosts">Отримати пости</my-button>
     <my-button @click="showDialog" style="margin: 15px 0">
       Створити пост
     </my-button>
@@ -14,6 +15,7 @@
 <script>
 import PostForm from "@/components/PostForm";
 import PostList from "@/components/PostList";
+import axios from "axios";
 
 export default {
   components: {
@@ -50,6 +52,16 @@ export default {
     },
     showDialog() {
       this.dialogVisible = true;
+    },
+    async fetchPosts() {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        );
+        console.log(response);
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 };
