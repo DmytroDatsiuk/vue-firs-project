@@ -5,17 +5,15 @@
       <div><strong>Опис: </strong>{{ post.body }}</div>
     </div>
     <div class="post__btns">
-      <my-button class="btn" style="color: red">Видалити</my-button>
+      <my-button style="color: red" @click="$emit('remove', post)"
+        >Видалити</my-button
+      >
     </div>
   </div>
 </template>
 
 <script>
-import MyButton from "../components/UI/MyButton.vue";
 export default {
-  components: {
-    MyButton,
-  },
   props: {
     post: {
       type: Object,
