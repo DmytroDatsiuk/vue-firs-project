@@ -3,7 +3,11 @@
     <h4>Створення поста</h4>
     <my-input v-model="post.title" type="text" placeholder="Назва" />
     <my-input v-model="post.body" type="text" placeholder="Опис" />
-    <my-button class="btn" style="margin-top: 15px" @click="createPost"
+    <my-button
+      type="button"
+      class="btn"
+      style="margin-top: 15px"
+      @click="createPost"
       >Створити</my-button
     >
   </form>

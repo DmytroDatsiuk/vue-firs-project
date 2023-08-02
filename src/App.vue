@@ -1,14 +1,14 @@
 <template>
   <div class="app">
     <h1>Сторінка з постами</h1>
-    <my-button @click="fetchPosts">Отримати пости</my-button>
     <my-button @click="showDialog" style="margin: 15px 0">
       Створити пост
     </my-button>
     <my-dialog v-model:show="dialogVisible">
       <post-form @create="createPost" />
     </my-dialog>
-    <post-list :posts="posts" @remove="removePost" />
+    <post-list :posts="posts" @remove="removePost" v-if="!isPostsLoading" />
+    <div v-else>Іде завантаження...</div>
   </div>
 </template>
 
@@ -25,13 +25,9 @@ export default {
 
   data() {
     return {
-      posts: [
-        { id: 1, title: "JavaScript", body: "Опис поста" },
-        { id: 2, title: "JavaScript 2", body: "Опис поста 2" },
-        { id: 3, title: "JavaScript 3", body: "Опис поста 3" },
-        { id: 4, title: "JavaScript 4", body: "Опис поста 4" },
-      ],
+      posts: [],
       dialogVisible: false,
+      isPostsLoading: false,
     };
   },
   methods: {
@@ -55,14 +51,20 @@ export default {
     },
     async fetchPosts() {
       try {
+        this.isPostsLoading = true;
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/posts?_limit=10"
         );
-        console.log(response);
+        this.posts = response.data;
       } catch (e) {
-        console.log(e);
+        console.log("error ->", e);
+      } finally {
+        this.isPostsLoading = false;
       }
     },
+  },
+  mounted() {
+    this.fetchPosts();
   },
 };
 </script>
