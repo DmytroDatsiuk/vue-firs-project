@@ -1,8 +1,8 @@
 {
-  "name": "vue-firs-project",
+  "name": "vue-first-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmytrodatsiuk.github.io/vue-firs-project/",
+  "homepage": "https://dmytrodatsiuk.github.io/vue-first-project/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
