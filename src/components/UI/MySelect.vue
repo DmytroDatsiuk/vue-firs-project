@@ -1,5 +1,9 @@
 <template>
-  <select v-bind:value="modelValue" @change="changeOption">
+  <select
+    v-bind:value="modelValue"
+    @change="changeOption"
+    style="cursor: pointer"
+  >
     <option disabled value="">Виберіть із списку</option>
     <option v-for="option in options" :key="option.value" :value="option.value">
       {{ option.name }}
