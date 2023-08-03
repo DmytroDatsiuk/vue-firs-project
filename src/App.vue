@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <h1>Сторінка з постами</h1>
-    <my-input v-model="searchQuery" />
+    <my-input v-model="searchQuery" placeholder="Пошук" />
     <div class="app__btns">
       <my-button @click="showDialog" style="margin: 15px 0">
         Створити пост
@@ -12,7 +12,7 @@
       <post-form @create="createPost" />
     </my-dialog>
     <post-list
-      :posts="sortedPosts"
+      :posts="sortedAndSearchedPosts"
       @remove="removePost"
       v-if="!isPostsLoading"
     />
@@ -84,6 +84,11 @@ export default {
     sortedPosts() {
       return [...this.posts].sort((a, b) =>
         a[this.selectedSort]?.localeCompare(b[this.selectedSort])
+      );
+    },
+    sortedAndSearchedPosts() {
+      return this.sortedPosts.filter((post) =>
+        post.title.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     },
   },
