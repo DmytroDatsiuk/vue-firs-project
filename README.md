@@ -1,4 +1,4 @@
-# vue-gohome
+# vue-first-project
 
 ## Project setup
 ```
