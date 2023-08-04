@@ -1,6 +1,8 @@
 <template>
   <div class="post">
     <div>
+      <div>{{ post.id }}</div>
+      <div>Кількість лайків - {{ $store.getters.doubleLikes }}</div>
       <div><strong>Назва: </strong>{{ post.title }}</div>
       <div><strong>Опис: </strong>{{ post.body }}</div>
     </div>
