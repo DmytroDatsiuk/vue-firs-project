@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Сторінка з постами</h1>
-    <my-input v-model="searchQuery" placeholder="Пошук" />
+    <my-input v-focus v-model="searchQuery" placeholder="Пошук" />
     <div class="app__btns">
       <my-button @click="showDialog" style="margin: 15px 0">
         Створити пост
