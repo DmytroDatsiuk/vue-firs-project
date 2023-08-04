@@ -25,7 +25,7 @@
     />
     <div v-else>Іде завантаження...</div>
     <div v-intersection="loadMorePosts" class="observer"></div>
-    <div class="page__wrapper">
+    <!-- <div class="page__wrapper">
       <div
         v-for="pageNumber in totalPage"
         :key="pageNumber"
@@ -37,7 +37,7 @@
       >
         {{ pageNumber }}
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
