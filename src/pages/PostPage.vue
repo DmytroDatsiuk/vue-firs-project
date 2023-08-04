@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <h1>Сторінка з постами</h1>
     <my-input v-model="searchQuery" placeholder="Пошук" />
     <div class="app__btns">
@@ -17,7 +17,7 @@
       v-if="!isPostsLoading"
     />
     <div v-else>Іде завантаження...</div>
-    <div ref="observer" class="observer"></div>
+    <div v-intersection="loadMorePosts" class="observer"></div>
     <!-- <div class="page__wrapper">
       <div
         v-for="pageNumber in totalPage"
@@ -133,17 +133,17 @@ export default {
   mounted() {
     this.fetchPosts();
 
-    const options = {
-      rootMargin: "0px",
-      threshold: 1.0,
-    };
-    const callback = (entries, observer) => {
-      if (entries[0].isIntersecting && this.page < this.totalPage) {
-        this.loadMorePosts();
-      }
-    };
-    const observer = new IntersectionObserver(callback, options);
-    observer.observe(this.$refs.observer);
+    // const options = {
+    //   rootMargin: "0px",
+    //   threshold: 1.0,
+    // };
+    // const callback = (entries, observer) => {
+    //   if (entries[0].isIntersecting && this.page < this.totalPage) {
+    //     this.loadMorePosts();
+    //   }
+    // };
+    // const observer = new IntersectionObserver(callback, options);
+    // observer.observe(this.$refs.observer);
   },
   computed: {
     sortedPosts() {
@@ -166,7 +166,6 @@ export default {
 </script>
 
 <style>
-
 .app__btns {
   margin: 15px 0;
   display: flex;

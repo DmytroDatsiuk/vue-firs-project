@@ -1,11 +1,15 @@
 <template>
   <div class="post">
     <div>
-      <div>{{ post.id }}</div>
       <div><strong>Назва: </strong>{{ post.title }}</div>
       <div><strong>Опис: </strong>{{ post.body }}</div>
     </div>
     <div class="post__btns">
+      <my-button
+        style="margin-right: 10px"
+        @click="$router.push(`/posts/${post.id}`)"
+        >Відкрити</my-button
+      >
       <my-button style="color: red" @click="$emit('remove', post)"
         >Видалити</my-button
       >
@@ -33,5 +37,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.post__btns {
+  display: flex;
+  /* align-items: center; */
 }
 </style>
