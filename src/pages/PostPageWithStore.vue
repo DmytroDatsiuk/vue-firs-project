@@ -138,6 +138,5 @@ export default {
 
 .observer {
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 </style>
